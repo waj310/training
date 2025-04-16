@@ -1,5 +1,5 @@
 pipeline {
-  # agent slave node
+  
     agent any
 
     environment {
