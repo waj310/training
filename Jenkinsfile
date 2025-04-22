@@ -15,19 +15,19 @@ pipeline {
 
     stage('Install Dependencies') {
       steps {
-        sh 'npm install'
+        bat 'npm install'
       }
     }
 
     stage('Build Docker Image') {
       steps {
-        sh "docker build -t ${IMAGE_NAME}:${TAG} ."
+        bat "docker build -t ${IMAGE_NAME}:${TAG} ."
       }
     }
 
     stage('Save Docker Image') {
       steps {
-        sh "docker save ${IMAGE_NAME}:${TAG} -o ${IMAGE_NAME}.tar"
+        bat "docker save ${IMAGE_NAME}:${TAG} -o ${IMAGE_NAME}.tar"
       }
     }
   }
