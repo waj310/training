@@ -6,6 +6,8 @@ pipeline {
     AWS_REGION = "us-east-2"
     ECR_REPO = '640168453782.dkr.ecr.us-east-2.amazonaws.com/argocd'
     TAG = "latest"
+    AWS_ACCESS_KEY_ID     = credentials('aws-access-key')
+    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
   }
 
   stages {
