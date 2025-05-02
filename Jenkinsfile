@@ -6,8 +6,8 @@ pipeline {
     AWS_REGION = "us-east-2"
     ECR_REPO = '640168453782.dkr.ecr.us-east-2.amazonaws.com/argocd'
     TAG = "latest"
-    AWS_ACCESS_KEY_ID     = credentials('aws-access-key')
-    AWS_SECRET_ACCESS_KEY = credentials('aws-secret-key')
+    AWS_ACCESS_KEY_ID     = "AKIAZKDIDM2LNNRRDR6S"
+    AWS_SECRET_ACCESS_KEY = "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" 
   }
 
   stages {
@@ -31,9 +31,7 @@ pipeline {
 
    stage('Login to ECR') {
       steps {
-        bat """
-          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
-        """
+        bat "aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO"
       }
     }
 
