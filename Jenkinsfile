@@ -23,7 +23,7 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        bat 'docker.build"${ECR_REPO}:${TAG}"'
+        bat "docker build -t ${ECR_REPO}:${TAG} ."
       }
     }
 
