@@ -3,6 +3,8 @@ pipeline {
   
   environment {
     IMAGE_NAME = "node-docker-jenkins-app"
+    AWS_REGION = "us-east-2"
+    ECR_REPO = '640168453782.dkr.ecr.us-east-2.amazonaws.com/argocd'
     TAG = "latest"
   }
 
@@ -21,15 +23,24 @@ pipeline {
 
     stage('Build Docker Image') {
       steps {
-        bat "docker build -t ${IMAGE_NAME}:${TAG} ."
+        bat "docker.build("${ECR_REPO}:${TAG}")"
       }
     }
 
-    stage('Save Docker Image') {
+   stage('Login to ECR') {
       steps {
-        bat "docker save ${IMAGE_NAME}:${TAG} -o ${IMAGE_NAME}.tar"
+        bat """
+          aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_REPO
+        """
       }
     }
+
+    stage('Push to ECR') {
+      steps {
+        bat "docker push ${ECR_REPO}:${TAG}"
+      }
+    }
+
   }
 
   post {
