@@ -1,1 +1,11 @@
+image:
+  repository: 123456789012.dkr.ecr.us-west-2.amazonaws.com/myapp 
+  tag: latest
+  pullPolicy: IfNotPresent
 
+service:
+  type: LoadBalancer
+  port: 80
+
+imagePullSecrets:
+  - name: regcred
