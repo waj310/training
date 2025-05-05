@@ -1,0 +1,11 @@
+image:
+  repository: 640168453782.dkr.ecr.us-east-2.amazonaws.com/argocd 
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+imagePullSecrets:
+  - name: regcred
