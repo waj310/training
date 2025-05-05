@@ -7,10 +7,10 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/waj310/training.git'
-    targetRevision: HEAD
+    targetRevision: main
     path: myapp
   destination:
-    server: 'https://kubernetes.default.svc'
+    server: 'https://3DFD46A55385A4C9919BF5B730E1B826.gr7.us-east-2.eks.amazonaws.com'
     namespace: default
   syncPolicy:
     automated:
